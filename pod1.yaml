@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod1
+spec:
+  containers:
+  - name: simplebox
+    image: nginx
+    volumeMounts:
+    - mountPath: /my/files
+      name: mypvc1
+  volumes:
+  - name: mypvc1
+    persistentVolumeClaim:
+      claimName: fileserver-claim1
+      readOnly: false
